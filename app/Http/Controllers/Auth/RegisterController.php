@@ -32,6 +32,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'role' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
             'country' => 'required|string|max:255',
             'password' => 'required|confirmed',
         ]);
@@ -40,6 +41,7 @@ class RegisterController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'role' => $request->role,
+            'location' => $request->location,
             'country' => $request->country,
             'password' => Hash::make($request->password),
         ]);
