@@ -4,7 +4,7 @@
     <!--Container-->
     <div class="container w-full md:w-12/12 xl:w-12/12 mx-auto py-6">
         <div class="bg-gray-800 rounded-t-md justify-center p-4 ">
-            <p class="text-2xl text-white font-bold text-center">VIEW CONVERT </p>
+            <p class="text-2xl text-white font-bold text-center">VIEW CONVERTS</p>
         </div>
         <!--Card-->
         <div id='recipients' class="px-3 py-6 rounded-b-md shadow bg-white">
@@ -152,92 +152,98 @@
 
 @section('script')
     <!--Datatables -->
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js">
-    </script>
+    {{-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js">
+    </script> --}}
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script>
         $(document).ready(function() {
             //init datatable
             var table = $('#converts-table').DataTable({
-                responsive: true,
-                // processing: true,
-                serverSide: true,
-                ajax: {
-                    "url": "{{ route('getConverts') }}",
-                },
-                columns: [{
-                        data: 'DT_RowIndex',
-                        name: 'DT_RowIndex'
-                    }, {
-                        data: 'name',
-                        name: 'name'
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ],
+                    responsive: true,
+                    // processing: true,
+                    serverSide: true,
+                    ajax: {
+                        "url": "{{ route('getConverts') }}",
                     },
-                    {
-                        data: 'known_name',
-                        name: 'known_name'
-                    },
-                    {
-                        data: 'phone_no',
-                        name: 'phone_no'
-                    },
-                    {
-                        data: 'sex',
-                        name: 'sex'
-                    },
-                    {
-                        data: 'marital_status',
-                        name: 'marital_status'
-                    },
-                    {
-                        data: 'age',
-                        name: 'age'
-                    },
-                    {
-                        data: 'residential_address',
-                        name: 'residential_address'
-                    },
-                    {
-                        data: 'nearest_bustop',
-                        name: 'nearest_bustop'
-                    },
-                    {
-                        data: 'email',
-                        name: 'email'
-                    },
-                    {
-                        data: 'office_address',
-                        name: 'office_address'
-                    },
-                    {
-                        data: 'prayer_request',
-                        name: 'prayer_request'
-                    },
-                    {
-                        data: 'want_to_worship',
-                        name: 'want_to_worship'
-                    },
-                    {
-                        data: 'date',
-                        name: 'date'
-                    },
-                    {
-                        data: 'follow_up_status',
-                        name: 'follow_up_status'
-                    },
-                    {
-                        data: 'created_at',
-                        name: 'created_at'
-                    },
-                    {
-                        data: 'updated_at',
-                        name: 'updated_at'
-                    },
-                    {
-                        data: 'action',
-                        name: 'action',
-                    },
-                ]
-            });
+                    columns: [{
+                            data: 'DT_RowIndex',
+                            name: 'DT_RowIndex'
+                        }, {
+                            data: 'name',
+                            name: 'name'
+                        },
+                        {
+                            data: 'known_name',
+                            name: 'known_name'
+                        },
+                        {
+                            data: 'phone_no',
+                            name: 'phone_no'
+                        },
+                        {
+                            data: 'sex',
+                            name: 'sex'
+                        },
+                        {
+                            data: 'marital_status',
+                            name: 'marital_status'
+                        },
+                        {
+                            data: 'age',
+                            name: 'age'
+                        },
+                        {
+                            data: 'residential_address',
+                            name: 'residential_address'
+                        },
+                        {
+                            data: 'nearest_bustop',
+                            name: 'nearest_bustop'
+                        },
+                        {
+                            data: 'email',
+                            name: 'email'
+                        },
+                        {
+                            data: 'office_address',
+                            name: 'office_address'
+                        },
+                        {
+                            data: 'prayer_request',
+                            name: 'prayer_request'
+                        },
+                        {
+                            data: 'want_to_worship',
+                            name: 'want_to_worship'
+                        },
+                        {
+                            data: 'date',
+                            name: 'date'
+                        },
+                        {
+                            data: 'follow_up_status',
+                            name: 'follow_up_status'
+                        },
+                        {
+                            data: 'created_at',
+                            name: 'created_at'
+                        },
+                        {
+                            data: 'updated_at',
+                            name: 'updated_at'
+                        },
+                        {
+                            data: 'action',
+                            name: 'action',
+                        },
+                    ]
+                })
+                .columns.adjust()
+                .responsive.recalc();
 
             // Get single article in EditModel
             var id;
