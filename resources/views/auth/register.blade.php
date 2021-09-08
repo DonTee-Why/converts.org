@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    {{ $status ?? ""}}
+    {{ $status ?? '' }}
     <div class="flex flex-col grid md:grid-cols-7 p-6">
         <div class="md:col-start-3 md:col-span-3">
             <div class="bg-gray-800 rounded-t-md justify-center p-4 ">
@@ -38,27 +38,9 @@
 
                     <div class="mb-5">
                         <label for="role" class="sr-only">Role</label>
-                        <select name="role" id="role" class="bg-gray-100 border-l-8  border-gray-600 w-full p-3 rounded-sm @error('role') border-red-500 @enderror">
-                            <option value="">  Enter Role </option>
-                            <option value="AGO">A.G.O</option>
-                            <option value="Geo-Political Zone Leader">Geo-Political Zone Leader</option>
-                            <option value="State Coordinator">State Coordinator</option>
-                            <option value="Int'l Office Representative">Int'l Office Representative</option>
-                            <option value="Country Head (Int'l)">Country Head (Int'l)</option>
-                            <option value="Regional Overseer">Regional Overseer</option>
-                            <option value="Zonal Pastor">Zonal Pastor</option>
-                        </select>
-                        @error('role')
-                            <span class="text-red-500 mt-2 text-sm" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    
-                    <div class="mb-5">
-                        <label for="role" class="sr-only">Branch/Region</label>
-                        <select name="role" id="role" class="bg-gray-100 border-l-8  border-gray-600 w-full p-3 rounded-sm @error('role') border-red-500 @enderror">
-                            <option value="">  Enter Branch </option>
+                        <select name="role" id="role"
+                            class="bg-gray-100 border-l-8  border-gray-600 w-full p-3 rounded-sm @error('role') border-red-500 @enderror">
+                            <option value=""> Enter Role </option>
                             <option value="AGO">A.G.O</option>
                             <option value="Geo-Political Zone Leader">Geo-Political Zone Leader</option>
                             <option value="State Coordinator">State Coordinator</option>
@@ -75,9 +57,22 @@
                     </div>
 
                     <div class="mb-5">
+                        <label for="location" class="sr-only">Branch/Region</label>
+                        <input type="text" name="location" id="location" placeholder="Branch/Region"
+                            class="bg-gray-100 border-l-8  border-gray-600 w-full p-3 rounded-sm @error('location') border-red-500 @enderror"
+                            value="{{ old('location') }}">
+                        @error('location')
+                            <span class="text-red-500 mt-2 text-sm" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="mb-5">
                         <label for="country" class="sr-only">Country</label>
-                        <select name="country" id="country" class="bg-gray-100 border-l-8  border-gray-600 w-full p-3 rounded-sm @error('country') border-red-500 @enderror">
-                            <option value="">  Select Country  </option>
+                        <select name="country" id="country"
+                            class="bg-gray-100 border-l-8  border-gray-600 w-full p-3 rounded-sm @error('country') border-red-500 @enderror">
+                            <option value=""> Select Country </option>
                             <option value="Afghanistan">Afghanistan</option>
                             <option value="Åland Islands">Åland Islands</option>
                             <option value="Albania">Albania</option>
